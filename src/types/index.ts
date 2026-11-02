@@ -53,6 +53,69 @@ export interface ResultadoImpacto {
   economiaAnual: number;
 }
 
+export type TipoTransporte = "Ônibus" | "Metrô" | "Trem" | "Bicicleta" | "VLT" | "Caminhada";
+export type StatusPassagem = "Disponível" | "Resgatada" | "Cancelada";
+export type StatusRequisicao = "idle" | "loading" | "success" | "error";
+export type CategoriaEmissao = "Baixa" | "Média" | "Alta" | "Zero";
+
+export interface UsuarioApi {
+  id: number;
+  nome: string;
+  email: string;
+  cpf: string;
+  dataCadastro?: string;
+}
+
+export interface TransporteApi {
+  id: number;
+  tipo: TipoTransporte;
+  nome: string;
+  valorPontos: number;
+  taxaCarbono: number;
+}
+
+export interface CartaoPontosApi {
+  id: number;
+  idUsuario: number;
+  numeroCartao: string;
+  saldoPontos: number;
+}
+
+export interface PassagemApi {
+  id: number;
+  idTransporte: number;
+  codigo: string;
+  valor: number;
+  status: StatusPassagem;
+}
+
+export interface ResgateApi {
+  id: number;
+  idCartao: number;
+  idPassagem: number;
+  dataResgate: string;
+}
+
+export type PassagemComTransporte = PassagemApi & {
+  transporte?: TransporteApi;
+};
+
+export type ResgateDetalhado = ResgateApi & {
+  usuario?: UsuarioApi;
+  passagem?: PassagemApi;
+  transporte?: TransporteApi;
+};
+
+export type UsuarioComCartao = UsuarioApi & {
+  cartao?: CartaoPontosApi;
+};
+
+export interface EstadoRequisicao<T> {
+  dados: T | null;
+  status: StatusRequisicao;
+  erro: string | null;
+}
+
 export interface Passagem {
   tipo: "onibus" | "metro";
   nome: string;
