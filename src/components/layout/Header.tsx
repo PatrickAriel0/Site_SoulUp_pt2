@@ -11,6 +11,8 @@ const ITENS_MENU: ItemMenu[] = [
   { rotulo: "Início", para: "/" },
   { rotulo: "Sobre", para: "/sobre" },
   { rotulo: "Solução", para: "/solucao" },
+  { rotulo: "Transportes (API)", para: "/transportes" },
+  { rotulo: "Carteira (API)", para: "/carteira" },
   { rotulo: "Integrantes", para: "/integrantes" },
   { rotulo: "FAQ", para: "/faq" },
   { rotulo: "Contato", para: "/contato" },
@@ -20,7 +22,6 @@ export function Header() {
   const [menuAberto, setMenuAberto] = useState<boolean>(false);
   const [rolou, setRolou] = useState<boolean>(false);
 
-  
   useEffect(() => {
     function aoRolar() {
       setRolou(window.scrollY > 20);
@@ -59,8 +60,7 @@ export function Header() {
             </span>
           </NavLink>
 
-          
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Principal">
+          <nav className="hidden items-center gap-5 xl:gap-6 lg:flex" aria-label="Principal">
             {ITENS_MENU.map((item) => (
               <NavLink key={item.para} to={item.para} className={classeLink} end={item.para === "/"}>
                 {({ isActive }) => (
@@ -75,7 +75,6 @@ export function Header() {
             ))}
           </nav>
 
-          
           <button
             type="button"
             onClick={() => setMenuAberto((aberto) => !aberto)}
@@ -103,7 +102,6 @@ export function Header() {
         </div>
       </Container>
 
-      
       <nav
         id="menu-mobile"
         aria-label="Principal (mobile)"
