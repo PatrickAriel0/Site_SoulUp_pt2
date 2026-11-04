@@ -53,9 +53,15 @@ export interface ResultadoImpacto {
   economiaAnual: number;
 }
 
+// ==========================================
+// TIPOS DA API REST JAVA (DDD)
+// ==========================================
+
 export type TipoTransporte = "Ônibus" | "Metrô" | "Trem" | "Bicicleta" | "VLT" | "Caminhada";
 export type StatusPassagem = "Disponível" | "Resgatada" | "Cancelada";
 export type StatusRequisicao = "idle" | "loading" | "success" | "error";
+
+// Union Types exigidos nos critérios
 export type CategoriaEmissao = "Baixa" | "Média" | "Alta" | "Zero";
 
 export interface UsuarioApi {
@@ -71,31 +77,42 @@ export interface TransporteApi {
   tipo: TipoTransporte;
   nome: string;
   valorPontos: number;
-  taxaCarbono: number;
+  taxaCarbono: number; // kg CO2/km
 }
 
 export interface CartaoPontosApi {
-  id: number;
-  idUsuario: number;
   numeroCartao: string;
   saldoPontos: number;
+  dataValidade?: string;
+  usuario?: UsuarioApi;
+  id?: number;
+  idUsuario?: number;
 }
 
 export interface PassagemApi {
   id: number;
-  idTransporte: number;
-  codigo: string;
-  valor: number;
-  status: StatusPassagem;
+  origem?: string;
+  destino?: string;
+  dataViagem?: string;
+  transporte?: TransporteApi;
+  valorEmPontos?: number;
+  status: StatusPassagem | string;
+  codigo?: string;
+  valor?: number;
+  idTransporte?: number;
 }
 
 export interface ResgateApi {
   id: number;
-  idCartao: number;
-  idPassagem: number;
   dataResgate: string;
+  pontosUtilizados?: number;
+  cartaoPontos?: CartaoPontosApi;
+  passagem?: PassagemApi;
+  idCartao?: number | string;
+  idPassagem?: number;
 }
 
+// Intersection Types exigidos nos critérios
 export type PassagemComTransporte = PassagemApi & {
   transporte?: TransporteApi;
 };
