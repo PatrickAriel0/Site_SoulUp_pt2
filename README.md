@@ -35,10 +35,10 @@ Equipe **NepTune Labs** — Turma **1TDSPK** (FIAP):
 ## 🚀 Como Usar
 
 ### Links Obrigatórios
-- 🌐 **Deploy na Vercel:** `site-soul-up-pt2.vercel.app`
+- 🌐 **Deploy na Vercel:** [site-soul-up-pt2.vercel.app](site-soul-up-pt2.vercel.app)
 - 🐙 **Repositório no GitHub:** [https://github.com/PatrickAriel0/Site_SoulUp_pt2](https://github.com/PatrickAriel0/Site_SoulUp_pt2)
 - ☁️ **API Java Remota (Render):** `https://transporte-sustentavel-api.onrender.com`
-- 🎬 **Vídeo de Demonstração (YouTube):** `https://youtu.be/7WycNejdQdw`
+- 🎬 **Vídeo de Demonstração (YouTube):** [https://youtu.be/7WycNejdQdw](https://youtu.be/7WycNejdQdw)
 
 ---
 
